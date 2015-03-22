@@ -103,6 +103,7 @@ public class BinaryTree {
             }
         }
 
+        // 难点：为什么要pop()？pop()的位置？
         pathBase.pop();
     }
 }
