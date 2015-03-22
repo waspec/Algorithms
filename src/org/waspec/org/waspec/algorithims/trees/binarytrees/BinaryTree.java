@@ -83,27 +83,27 @@ public class BinaryTree {
     }
 
     // pathBag和pathBase都是“穿墙”、“共用”的
-    public static void getAllPathsUseBacktracking(List<List<Node>> pathBag, Stack<Node> pathBase, Node currentRoot) throws Exception {
-        if (pathBag == null || pathBase == null) {
+    public static void getAllPathsUseBacktracking(List<List<Node>> pathBag, Stack<Node> pathSoFar, Node currentRoot) throws Exception {
+        if (pathBag == null || pathSoFar == null) {
             throw new Exception("Path bag or path base cannot be null.");
         }
 
-        pathBase.push(currentRoot);
+        pathSoFar.push(currentRoot);
 
         // 题眼：找到合法路径
         if (currentRoot.leftChild == null && currentRoot.rightChild == null) {
-            pathBag.add(new ArrayList<Node>(pathBase)); // 最终结果的时候一定要new一个新对象（结果固化）！
+            pathBag.add(new ArrayList<Node>(pathSoFar)); // 最终结果的时候一定要new一个新对象（结果固化）！
         } else {
             if (currentRoot.leftChild!=null){
-                getAllPathsUseBacktracking(pathBag, pathBase, currentRoot.leftChild);
+                getAllPathsUseBacktracking(pathBag, pathSoFar, currentRoot.leftChild);
             }
 
             if (currentRoot.rightChild!=null){
-                getAllPathsUseBacktracking(pathBag, pathBase, currentRoot.rightChild);
+                getAllPathsUseBacktracking(pathBag, pathSoFar, currentRoot.rightChild);
             }
         }
 
         // 难点：为什么要pop()？pop()的位置？
-        pathBase.pop();
+        pathSoFar.pop();
     }
 }
