@@ -1,4 +1,4 @@
-package org.waspec.org.waspec.algorithims.trees.binarytrees;
+package org.waspec.algorithims.trees.binarytrees;
 
 /**
  * Created by Timothy on 3/22/2015.

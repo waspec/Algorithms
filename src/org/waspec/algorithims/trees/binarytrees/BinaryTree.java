@@ -1,4 +1,4 @@
-package org.waspec.org.waspec.algorithims.trees.binarytrees;
+package org.waspec.algorithims.trees.binarytrees;
 
 import java.util.ArrayList;
 import java.util.List;
