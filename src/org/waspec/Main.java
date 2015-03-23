@@ -11,6 +11,10 @@ public class Main {
 
     public static void main(String[] args) {
 
+    }
+
+    // Get all path of binary tree use Backtracking
+    public static void test001(){
         Node root = BinaryTree.buildTree();
         List<List<Node>> result = new ArrayList<List<Node>>();
         Stack<Node> pathBase = new Stack<Node>();
