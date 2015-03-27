@@ -55,7 +55,7 @@ public class Solution001 {
         }
     }
 
-    // 用重复
+    // 有重复
     public void backtracking(int[] candidates, int target, List<List<Integer>> bag, Stack<Integer> stack, int sumOfStack) {
         for (int i = 0; i < candidates.length; i++) {
             int currentSum = sumOfStack + candidates[i];
