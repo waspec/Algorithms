@@ -25,9 +25,9 @@ public class Solution001 {
         }
     }
 
-    /**
-     * *******************
-     */
+
+    //*********************************************
+
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
@@ -72,8 +72,8 @@ public class Solution001 {
     }
 }
 
-/****************
+/**
  * 1. 经过一段时间训练，感觉毫无难度，但太自信了，连条件都没看
  * 2. 题眼：如何无重复？一开始会想到排序，坑也
  * 3. 题眼：如何让结果非降序排列？这次是排序
- * ***************/
+ */
