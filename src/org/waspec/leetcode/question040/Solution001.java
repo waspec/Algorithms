@@ -7,9 +7,9 @@ import java.util.*;
  */
 public class Solution001 {
 
-    public static void main(String args) {
-        int[] candidates = new int[]{10, 1, 2, 7, 6, 1, 5};
-        int target = 8;
+    public static void main(final String[] args) {
+        int[] candidates = new int[]{8,7,4,3};
+        int target = 11;
         Solution001 solution001 = new Solution001();
         List<List<Integer>> result = solution001.combinationSum2(candidates, target);
         for (List<Integer> list: result){
@@ -25,13 +25,13 @@ public class Solution001 {
 
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
-        Deque<Integer> path = new LinkedList<Integer>();
+        Stack<Integer> path = new Stack<Integer>();
         Arrays.sort(candidates); // 保证非降序
         backtracking(candidates, target, result, path, 0, 0);
         return result;
     }
 
-    public void backtracking(int[] candidates, int target, List<List<Integer>> bag, Deque<Integer> path, int currentSumOfPath, int currentIndex) {
+    public void backtracking(int[] candidates, int target, List<List<Integer>> bag, Stack<Integer> path, int currentSumOfPath, int currentIndex) {
         for (int i = currentIndex; i < candidates.length; i++) {
             int sum = currentSumOfPath + candidates[i];
             if (sum == target) {
@@ -40,7 +40,7 @@ public class Solution001 {
                 bag.add(oneResult);
                 // 没有没有push操作，所以也不用pop
             } else if (sum < target) {
-                path.push(candidates[currentIndex]);
+                path.push(candidates[i]);
                 backtracking(candidates, target, bag, path, sum, i + 1); // 题眼：保证不重用当前数组元素，而是从“下一个”开始
                 path.pop();
             } // 不用考虑sum>target的情况
