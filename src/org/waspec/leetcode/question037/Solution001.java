@@ -2,9 +2,6 @@ package org.waspec.leetcode.question037;
 
 import java.util.*;
 
-/**
- * Created by v-timliu on 4/1/2015.
- */
 public class Solution001 {
     public static void main(String[] args) {
         char[][] board = {
@@ -117,3 +114,7 @@ public class Solution001 {
         return result;
     }
 }
+
+/**
+ * 1. 本方案尚未完成
+ * */
