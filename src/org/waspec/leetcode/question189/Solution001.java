@@ -3,8 +3,8 @@ package org.waspec.leetcode.question189;
 public class Solution001 {
 
     public static void main(String[] args) {
-        int[] numbers = new int[]{1, 2, 3, 4, 5, 6, 7};
-        int k = 3;
+        int[] numbers = new int[]{1, 2, 3};
+        int k = 4;
         Solution001 solution001 = new Solution001();
         solution001.rotate(numbers, k);
         for (int i = 0; i < numbers.length; i++) {
@@ -12,7 +12,8 @@ public class Solution001 {
         }
     }
 
-    public void rotate(int[] numbers, int k) { // 问面试官：k>n、k<0、k==0时想要什么结果。
+    public void rotate(int[] numbers, int k) { // 问面试官：k>n、k==n、k<0、k==0时想要什么结果。
+        k %= numbers.length; // 题眼：什么是“steps”
         rotateArray(numbers, 0, numbers.length - 1);
         rotateArray(numbers, 0, k - 1);
         rotateArray(numbers, k, numbers.length - 1);
@@ -33,5 +34,6 @@ public class Solution001 {
 }
 
 /**
- * 1. 此方案仍然有问题，还没有仔细考虑k<0, k==0, k==n, k>n的情况
- **/
+ * 1. 此题的主体算法很简单，麻烦的地方是它的各种corner case——k==0, k<0, k==n, k>n等等
+ * 2. 题眼：理解什么是“step”——取余
+ */
