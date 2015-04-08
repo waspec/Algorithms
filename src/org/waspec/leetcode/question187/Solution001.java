@@ -39,5 +39,5 @@ public class Solution001 {
 }
 
 /**
- * 1. 这是一个很朴素的解法，但因为使用的是String，所以得到Memory Limit Exceeded的结果也是很正常的。正确解法见Solution2
+ * 1. 这是一个很朴素的解法，但因为使用的是String，所以得到Memory Limit Exceeded的结果也是很正常的。
  * */
