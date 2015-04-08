@@ -5,7 +5,7 @@ import java.util.*;
 public class Solution002 {
     public static void main(String[] args) {
         Solution002 solution002 = new Solution002();
-        String rawString = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT";
+        String rawString = "GAGAGAGAGAGA";
         List<String> result = solution002.findRepeatedDnaSequences(rawString);
         System.out.println(result.size());
     }
@@ -16,11 +16,11 @@ public class Solution002 {
     }
 
     public List<String> findPattern(String rawString, int patternLength) {
-        Map<Long, Integer> patternCounterMap = new HashMap<Long, Integer>();
+        Map<Integer, Integer> patternCounterMap = new HashMap<Integer, Integer>();
         if (rawString.length() >= patternLength) {
-            for (int i = 0; i < rawString.length() - patternLength; i++) {
+            for (int i = 0; i <= rawString.length() - patternLength; i++) { // 坑：是i <= rawString.length() - patternLength，不是i < rawString.length() - patternLength
                 String piece = rawString.substring(i, i + patternLength); // 坑：是i+patternLength，不是i+patternLength-1
-                Long key = pieceToLong(piece);
+                Integer key = pieceToInt(piece);
                 if (patternCounterMap.containsKey(key)) {
                     patternCounterMap.put(key, patternCounterMap.get(key) + 1);
                 } else {
@@ -30,60 +30,62 @@ public class Solution002 {
         }
 
         List<String> result = new ArrayList<String>();
-        for (Long key : patternCounterMap.keySet()) {
+        for (Integer key : patternCounterMap.keySet()) {
             if (patternCounterMap.get(key) > 1)
-                result.add(longToPiece(key));
+                result.add(intToPiece(key, patternLength));
         }
 
         return result;
     }
 
-    public long pieceToLong(String piece) { // A->1, G->2, C->3, T->4
-        StringBuilder stringBuilder = new StringBuilder();
+    public int pieceToInt(String piece) { // A->00, G->01, C->10, T->11
+        int result = 0;
         for (int i = 0; i < piece.length(); i++) {
+            result <<= 2;
             switch (piece.charAt(i)) {
-                case 'A':
-                    stringBuilder.append('1');
+                case 'A': // 本分支可省略
+                    result |= 0;
                     break;
                 case 'G':
-                    stringBuilder.append('2');
+                    result |= 1;
                     break;
                 case 'C':
-                    stringBuilder.append('3');
+                    result |= 2;
                     break;
                 case 'T':
-                    stringBuilder.append('4');
+                    result |= 3;
                     break;
             }
         }
 
-        return Long.parseLong(stringBuilder.toString());
+        return result;
     }
 
-    public String longToPiece(Long integer) {
+    public String intToPiece(int number, int pieceLength) {
         StringBuilder stringBuilder = new StringBuilder();
-        String str = integer.toString();
-        for (int i = 0; i < str.length(); i++) {
-            switch (str.charAt(i)) {
-                case '1':
+        for (int i = 0; i < pieceLength; i++) {
+            int code = number & 3;
+            number >>>= 2;
+            switch (code) {
+                case 0:
                     stringBuilder.append('A');
                     break;
-                case '2':
+                case 1:
                     stringBuilder.append('G');
                     break;
-                case '3':
+                case 2:
                     stringBuilder.append('C');
                     break;
-                case '4':
+                case 3:
                     stringBuilder.append('T');
                     break;
             }
         }
 
-        return stringBuilder.toString();
+        return stringBuilder.reverse().toString(); // 坑：别忘了反转！
     }
 }
 
 /**
  * 1. 压缩成long仍然Memory Limit Exceeded
- * */
+ */
