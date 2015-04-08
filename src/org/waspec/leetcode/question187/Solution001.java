@@ -40,4 +40,5 @@ public class Solution001 {
 
 /**
  * 1. 这是一个很朴素的解法，但因为使用的是String，所以得到Memory Limit Exceeded的结果也是很正常的。
+ * 2. 坑：把char转成int之后再形成map的key就能节省内存吗？错！int比char还占内存。
  * */
