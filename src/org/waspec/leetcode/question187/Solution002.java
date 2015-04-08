@@ -85,7 +85,3 @@ public class Solution002 {
         return stringBuilder.reverse().toString(); // 坑：别忘了反转！
     }
 }
-
-/**
- * 1. 压缩成long仍然Memory Limit Exceeded
- */
