@@ -38,7 +38,7 @@ public class Solution001 {
 
             newNode.val += carray;
             carray = newNode.val / 10; // 这句是最后提出来的
-            newNode.val %= 10; // 坑
+            newNode.val %= 10; // 坑：一开始竟然把这句给忘了
 
             q = q.next;
         }
@@ -59,5 +59,5 @@ class ListNode {
 
 /**
  * 1. 使用dummy head处理链表延续的典例
- * 2. 需要经常练！
+ * 2. 需要经常练！特别适合像我这种粗心的人反复练习
  */
