@@ -12,7 +12,7 @@ public class Solution001 {
 //        head.next.next = new ListNode(3);
 
         Solution001 solution001 = new Solution001();
-        ListNode result = solution001.removeNthFromEnd(head, 1);
+        ListNode result = solution001.removeNthFromEnd(head, 2);
         while (result != null) {
             System.out.println(result.val);
             result = result.next;
