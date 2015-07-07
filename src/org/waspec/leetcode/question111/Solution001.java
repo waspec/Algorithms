@@ -46,6 +46,7 @@ class TreeNode {
 }
 
 /**
+ * 注意：本方案有问题尚未解决，请参考其它方案
  * 提示：再次面临DFT和BFT的选择。
  * 提示：感觉上BFT的效率高，但实际上并不一定——比如最短path出现在最后一层
  * 提示：选择好if条件，能让代码简化很多——尝试使用if(root.left!=null && root.right!=null)开始
